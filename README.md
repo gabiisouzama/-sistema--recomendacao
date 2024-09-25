@@ -1,8 +1,17 @@
 # -sistema--recomendacao
-# Sistema de Recomendação
+# Projeto de Recomendação de Filmes
 
 ## Propósito do Projeto
-O projeto tem como objetivo desenvolver um sistema de recomendação de filmes que utiliza algoritmos de agrupamento para sugerir filmes com base no histórico de usuários. A ideia central é proporcionar uma experiência personalizada, ajudando os usuários a descobrir novos filmes que se alinhem aos seus gostos e preferências.
+O objetivo deste projeto é desenvolver um sistema de recomendação de filmes que utiliza técnicas de aprendizado de máquina para sugerir novos filmes a usuários com base em suas preferências anteriores. Ao implementar um algoritmo de agrupamento, buscamos identificar padrões de comportamento entre os usuários, permitindo que recomendações mais precisas e personalizadas sejam oferecidas.
 
 ## Algoritmo de Agrupamento Utilizado
-Para as recomendações, utilizamos o algoritmo K-means, que é eficaz na segmentação de dados em grupos (clusters). Este algoritmo permite identificar padrões no comportamento dos usuários, agrupando aqueles que possuem preferências similares. Com isso, o sistema pode sugerir filmes que outros usuários no mesmo grupo gostaram, aumentando a relevância das recomendações.
+Para este projeto, utilizamos o algoritmo K-means, que é uma técnica popular de agrupamento não supervisionado. O K-means é utilizado para agrupar usuários com base nas classificações de filmes, facilitando a identificação de grupos de usuários com preferências semelhantes. 
+
+### Funcionamento do K-means:
+1. **Inicialização**: Define-se o número de clusters (grupos) a serem formados. Neste projeto, o número de clusters é definido como 2.
+2. **Atribuição de Grupos**: Cada usuário é atribuído a um cluster com base em suas características (neste caso, as classificações de filmes).
+3. **Atualização de Centróides**: O algoritmo recalcula a posição dos centróides de cada cluster, que representam as características médias dos usuários em cada grupo.
+4. **Iteração**: O processo de atribuição e atualização continua até que as atribuições de cluster se estabilizem, ou seja, os usuários não mudam mais de grupo.
+
+### Recomendação de Filmes
+Após o agrupamento, o sistema recomenda filmes a um usuário com base nos filmes assistidos por outros usuários que pertencem ao mesmo grupo. Essa abordagem aproveita a similaridade entre as preferências dos usuários para sugerir novos conteúdos que eles podem gostar.
