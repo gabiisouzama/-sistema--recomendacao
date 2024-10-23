@@ -9,18 +9,20 @@ Original file is located at
 
 import numpy as np
 from sklearn.cluster import KMeans
-movie_ratings = np.array([
-    [1, 0, 0, 1, 1, 1],
-    [1, 1, 0, 0, 0, 0],
-    [0, 1, 1, 0, 1, 1],
-    [0, 0, 1, 1, 1, 0],
-    [1, 0, 1, 0, 1, 0],
-    [0, 1, 0, 1, 0, 1],
-    [0, 0, 0, 0, 1, 0],
-    [1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 1, 0, 1],
-    [0, 1, 0, 1, 1, 0]
-])
+import pandas as pd
+# 1 passo- especificar o caminho do arquivo CSV
+caminho_arquivo = '/content/filmes_100_usuarios.csv'
+
+# 2 passo- ler o CSV usando pandas
+df = pd.read_csv(caminho_arquivo)
+
+#exibir o cabeçalho do arquivo para verificar se foi lido corretamente
+print(df.head())
+
+
+# matriz com os filmes assistidos
+movie_ratings = df.drop(columns=["Unnamed: 0"]).values
+
 
 #treinar modelo
 #numero de clusters(grupos)
@@ -68,7 +70,8 @@ for i in range(len(movie_ratings)):
 
     return sorted(filmes_recomendados)
 
-filmes_assistidos_usuario = [1, 0, 1, 0]
+
+filmes_assistidos_usuario = [1,0,1,0,0,0,1,0,0,0]
 filmes_recomendados = recomendar_filmes(filmes_assistidos_usuario,
                                         movie_ratings, grupos_indice)
 
